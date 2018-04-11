@@ -1,32 +1,25 @@
 import os 
 import subprocess
-
-
-# p = subprocess.Popen("adb remount", shell=True, stdout=subprocess.PIPE)
-# out = p.stdout.readlines()
-# print out
-# for line in out:
-#     print line.strip()
-
-# print "aaa"
+import sys
 
 def check_phone_status():
+    print("Start ................................")
     status = 0
     output = subprocess.Popen("adb devices", shell=True, stdout=subprocess.PIPE)
     values = output.stdout.readlines()
-    print len(values)
+    print (len(values))
     if len(values) <= 2:
         status = 1
-        print "No device connected!"
+        print ("No device connected!")
         return
     elif len(values) > 3:
         status = 2
-        print "More than one device connected!"
+        print ("More than one device connected!")
         return
     output = subprocess.Popen("adb root", shell=True, stdout=subprocess.PIPE)
     output = subprocess.Popen("adb remount", shell=True, stdout=subprocess.PIPE)
     values = output.stdout.readlines()
-    print values[0]
+    print (values[0])
     if (values[0].find("Not running as root") != -1) :
         status = 3
         print ("This is unroot load")
