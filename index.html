@@ -3,17 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-
+    <div align="center">
+      <button id="catch_trace">Catch Trace</button>
+    </div>
     <script>
       // You can also require other files to run in this process
-      require('./renderer.js')
+      // require('./renderer.js')
+      // function myclick() {
+      //   alert("123");
+      // }
+      
     </script>
+    <script src="./js/function.js"></script>
   </body>
 </html>
