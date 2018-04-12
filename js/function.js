@@ -32,7 +32,7 @@ document.getElementById("catch_trace").onclick = function() {
     // });
     var fs = require("fs")
     path = require('path');
-    path = __dirname + "\\python\\script\\py_test.py"
+    path = __dirname + "\\python\\script\\catchtrace.py"
     console.log(path)
     var exec = require('child_process').exec;
     var arg1 = 'hello'
