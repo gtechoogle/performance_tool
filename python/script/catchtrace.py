@@ -4,7 +4,7 @@ import sys
 
 def check_phone_status():
     print("Start ................................")
-    status = 0
+    status = -1
     output = subprocess.Popen("adb devices", shell=True, stdout=subprocess.PIPE)
     values = output.stdout.readlines()
     print (len(values))
@@ -23,10 +23,13 @@ def check_phone_status():
     if (values[0].find("Not running as root") != -1) :
         status = 3
         print ("This is unroot load")
+    if (values[0].find("remount succeeded") != -1) :
+        status = 0
     return status
 
 def catch_unroot_phone_systrace():
-    cmd = "python ../systrace/systrace.py --time=10 -b 10000 -o mytrace.html sched gfx input view wm am res dalvik freq power camera"
+    print "start to catch"
+    cmd = "python E:\\mtk_tool\\systrace\\systrace\\systrace.py --time=10 -b 10000 -o mytrace.html sched gfx input view wm am res dalvik freq power camera"
     os.system(cmd)
     # output = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     # values = output.stdout.readlines()
@@ -37,7 +40,10 @@ def catch_root_phone_systrace():
 
 def main():
     phone_status = check_phone_status()
-    if phone_status == 1:
+    if phone_status == 0:
+        print ('ready to catch trace')
+        catch_unroot_phone_systrace()
+    elif phone_status == 1:
         pass
     elif phone_status == 2:
         pass
