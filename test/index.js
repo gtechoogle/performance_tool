@@ -130,5 +130,6 @@ describe('demo app', function () {
       .auditSectionAccessibility('protocol')
       .auditSectionAccessibility('pdf')
       .auditSectionAccessibility('desktop-capturer')
+      .auditSectionAccessibility('launch-time')
   })
 })
