@@ -6,11 +6,12 @@
           <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
           Catch the trace for app launch
         </h1>
-        <h3>The <code>BrowserWindow</code> module in Electron allows you to create a new browser window or manage an existing one.</h3>
+        <!-- <h3>The <code>BrowserWindow</code> module in Electron allows you to create a new browser window or manage an existing one.</h3> -->
 
-        <p>Each browser window is a separate process, known as the renderer process. This process, like the main process that controls the life cycle of the app, has full access to the Node.js APIs.
+        <!-- <p>Each browser window is a separate process, known as the renderer process. This process, like the main process that controls the life cycle of the app, has full access to the Node.js APIs.
 
-        <p>Open the <a href="http://electron.atom.io/docs/api/browser-window">full API documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a> in your browser.</p>
+        <p>Open the <a href="http://electron.atom.io/docs/api/browser-window">full API documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a> in your browser.</p> -->
+        <p>Open the <a href="http://electron.atom.io/docs/api/browser-window">link <span class="u-visible-to-screen-reader">(opens in new window)</span></a> to check detail SOP</a> </p>
       </div>
     </header>
     <div class="demo">
@@ -20,17 +21,20 @@
         </button>
         <div class="demo-box">
           <div class="demo-controls">
-            <button class="demo-button" id="cold-launch">View Demo</button>
+            <button class="demo-button" id="start-cold-launch">Start</button>
+            <button class="demo-button" id="end-cold-launch">End</button>
+            <button class="demo-button" id="show-trace">Show Trace</button>
+            <button class="demo-button" id="config-cold-launch">Config</button>
           </div>
-          <p>The <code>BrowserWindow</code> module gives you the ability to create new windows in your app. This main process module can be used from the renderer process with the <code>remote</code> module, as is shown in this demo.</p>
+          <!-- <p>The <code>BrowserWindow</code> module gives you the ability to create new windows in your app. This main process module can be used from the renderer process with the <code>remote</code> module, as is shown in this demo.</p>
 
-          <p>There are a lot of options when creating a new window. A few are in this demo, but visit the <a href="http://electron.atom.io/docs/api/browser-window">documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a> for the full list.</p>
-          <h5>Renderer Process</h5>
+          <p>There are a lot of options when creating a new window. A few are in this demo, but visit the <a href="http://electron.atom.io/docs/api/browser-window">documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a> for the full list.</p> -->
+          <!-- <h5>Renderer Process</h5> -->
           <!-- <pre><code data-path="renderer-process/windows/create-window.js"></code></pre> -->
           <div class="demo-protip">
             <!-- <h2>ProTip</h2>
             <strong>Use an invisible browser window to run background tasks.</strong> -->
-            <p id='terminal'></p>
+            <p id='console-output'>Test</p>
             <!-- <pre>
 <code class="language-js">var win = new BrowserWindow({
   width: 400, height: 225, show: false
