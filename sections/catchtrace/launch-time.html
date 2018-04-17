@@ -4,7 +4,7 @@
       <div class="section-wrapper">
         <h1>
           <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
-          Catch the trace for app launch
+          Catch app launch trace
         </h1>
         <!-- <h3>The <code>BrowserWindow</code> module in Electron allows you to create a new browser window or manage an existing one.</h3> -->
 
@@ -16,14 +16,14 @@
     </header>
     <div class="demo">
       <div class="demo-wrapper">
-        <button id="new-window-demo-toggle" class="js-container-target demo-toggle-button">Catch app cold start trace 
+        <button id="new-window-demo-toggle" class="js-container-target demo-toggle-button">Catch app cold launch trace 
           <div class="demo-meta u-avoid-clicks">Cold start must go to settings to force stop the apps</div>
         </button>
         <div class="demo-box">
           <div class="demo-controls">
             <button class="demo-button" id="start-cold-launch">Start</button>
             <button class="demo-button" id="end-cold-launch">End</button>
-            <button class="demo-button" id="show-trace">Show Trace</button>
+            <button class="demo-button" id="show-cold-launch-trace">Show Trace</button>
             <button class="demo-button" id="config-cold-launch">Config</button>
           </div>
           <!-- <p>The <code>BrowserWindow</code> module gives you the ability to create new windows in your app. This main process module can be used from the renderer process with the <code>remote</code> module, as is shown in this demo.</p>
@@ -31,14 +31,32 @@
           <p>There are a lot of options when creating a new window. A few are in this demo, but visit the <a href="http://electron.atom.io/docs/api/browser-window">documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a> for the full list.</p> -->
           <!-- <h5>Renderer Process</h5> -->
           <!-- <pre><code data-path="renderer-process/windows/create-window.js"></code></pre> -->
-          <div class="demo-protip">
+          <div class="console-box">
             <!-- <h2>ProTip</h2>
             <strong>Use an invisible browser window to run background tasks.</strong> -->
-            <p id='console-output'>Test</p>
+            <font class="console-text" id='cold-launch-console'></font>
             <!-- <pre>
 <code class="language-js">var win = new BrowserWindow({
   width: 400, height: 225, show: false
 })</code></pre> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="new-window-demo-toggle" class="js-container-target demo-toggle-button">Catch app second launch trace 
+          <div class="demo-meta u-avoid-clicks">Second launch don't need to kill app process</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="start-hot-launch">Start</button>
+            <button class="demo-button" id="end-hot-launch">End</button>
+            <button class="demo-button" id="show-hot-launch-trace">Show Trace</button>
+            <button class="demo-button" id="config-hot-launch">Config</button>
+          </div>
+          <div class="console-box">
+            <font class="console-text" id='hot-launch-console'></font>
           </div>
         </div>
       </div>
@@ -128,11 +146,12 @@
       </div>
     </div> -->
     <script type="text/javascript">
-      require('./renderer-process/launchtime/coldstart')
-      require('./renderer-process/windows/create-window')
-      require('./renderer-process/windows/manage-window')
-      require('./renderer-process/windows/using-window-events')
-      require('./renderer-process/windows/frameless-window')
+      require('./renderer-process/launchtime/coldlaunch')
+      require('./renderer-process/launchtime/hotlaunch')
+      // require('./renderer-process/windows/create-window')
+      // require('./renderer-process/windows/manage-window')
+      // require('./renderer-process/windows/using-window-events')
+      // require('./renderer-process/windows/frameless-window')
     </script>
 
   </section>

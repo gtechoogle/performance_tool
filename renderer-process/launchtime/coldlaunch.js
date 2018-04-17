@@ -1,15 +1,15 @@
 const { BrowserWindow } = require('electron').remote
 const path = require('path')
 
-const manageWindowBtn = document.getElementById('start-cold-launch')
-const showtraceBtn = document.getElementById('show-trace')
-const consoleScreen = document.getElementById('console-output')
+const startcatchBtn = document.getElementById('start-cold-launch')
+const showtraceBtn = document.getElementById('show-cold-launch-trace')
+const consoleScreen = document.getElementById('cold-launch-console')
 let win
+var consoleOutput = ""
 
-manageWindowBtn.addEventListener('click', (event) => {
+startcatchBtn.addEventListener('click', (event) => {
     //   const modalPath = path.join('file://', __dirname, '../../sections/windows/manage-modal.html')
     //   win = new BrowserWindow({ width: 400, height: 275 })
-
     //   win.on('resize', updateReply)
     //   win.on('move', updateReply)
     //   win.on('close', () => { win = null })
@@ -21,11 +21,11 @@ manageWindowBtn.addEventListener('click', (event) => {
     //     const message = `Size: ${win.getSize()} Position: ${win.getPosition()}`
     //     manageWindowReply.innerText = message
     //   }
-    const manageWindowBtn = document.getElementById('cold-launch')
 
-    cmd = "E:\\mtk_tool\\systrace\\systrace\\systrace.py"
+    const filepath = path.join(__dirname, '../../python/device.py')
+    // cmd = "E:\\mtk_tool\\systrace\\systrace\\systrace.py"
     var PythonShell = require('python-shell');
-    var pyshell = new PythonShell(cmd);
+    var pyshell = new PythonShell(filepath);
 
     // sends a message to the Python script via stdin
     // pyshell.send('hello');
@@ -33,8 +33,11 @@ manageWindowBtn.addEventListener('click', (event) => {
     pyshell.on('message', function(message) {
         // received a message sent from the Python script (a simple "print" statement)
         console.log(message);
-
         showOnConsole(message)
+        if (message.indexOf("Device connected!")!=-1)
+        {
+            console.log("go to next step")
+        }
     });
 })
 
@@ -44,7 +47,7 @@ showtraceBtn.addEventListener('click', (event) => {
     // win.on('resize', updateReply)
     // win.on('move', updateReply)
     win.on('close', () => { win = null })
-    win.loadURL('https://github.com')
+    win.loadURL('E:\\mtk_tool\\systrace\\systrace\\YY_O1.html')
     win.show()
 
     // function updateReply() {
@@ -55,7 +58,8 @@ showtraceBtn.addEventListener('click', (event) => {
 })
 
 function showOnConsole(message) {
-    var console_content = consoleScreen.innerText + message + '\n';
-    consoleScreen.innerHTML = console_content;
+    consoleOutput= consoleOutput + message + "<br />";
+    console.log(consoleOutput)
+    consoleScreen.innerHTML = consoleOutput;
 
 }

@@ -203,3 +203,16 @@
   font-weight: 600;
 }
 
+/* Console ----------------------------- */
+.console-box {
+  margin-top: 1rem;
+  padding: 1rem 1rem 1rem 1rem;
+  border: 1px solid hsla(0,0%,0%,.06);
+  border-radius: 3px;
+  background: black;
+  height: 320px;
+  overflow:scroll
+}
+.console-text {
+  color: white
+}
