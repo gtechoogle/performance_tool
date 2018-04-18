@@ -131,5 +131,6 @@ describe('demo app', function () {
       .auditSectionAccessibility('pdf')
       .auditSectionAccessibility('desktop-capturer')
       .auditSectionAccessibility('launch-time')
+      .auditSectionAccessibility('apk-parse')
   })
 })

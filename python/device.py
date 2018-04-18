@@ -1,4 +1,5 @@
 import subprocess
+import os
 
 deviceInfo=[]
 def connectDevcie():
@@ -8,19 +9,23 @@ def connectDevcie():
         item = bytes.decode(item)
         if item != '':
             deviceInfo.append(item)
-            print('-----')
-            print(item)
     if len(deviceInfo) <= 1:
         return False
     else:
         return True
     # except Exception, e:  
     #     print "Device Connect Fail:",e
-
+def getscriptpath():
+    print os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)) 
+def catchtrace():
+    cwd = getscriptpath()
+    output = os.Popen()
+    pass
 def main():
     connected = connectDevcie()
     if connected:
         print ("Device connected!")
+        catchtrace()
         if len(deviceInfo) > 2:
             print ("More than one device connected, please check it!")
         else:
