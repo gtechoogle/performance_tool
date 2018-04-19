@@ -20,9 +20,14 @@ def get_standard_systrace_path():
     parentpath=os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
     return os.path.join(parentpath,"tools","systrace","systrace.py")
     # print scriptpath
+def catch_root_trace():
+    pass
 def catch_mtk_trace():
     if root_phone():
-        pass
+        catch_root_trace()
+    else:
+        print("Phone can not root successfully, will use standard way to catch trace!")
+        catch_standard_trace()
 def run_cmd(cmd):
     return subprocess.Popen(cmd,
                             shell=True,
@@ -35,7 +40,10 @@ def root_phone():
     output = run_cmd(command)
     if len(output) > 1:
         data = output[0].split('\r\n')
-        print data
+        for item in data:
+            if item.find("remount succeeded") != -1:
+                return True
+    return False
 
 def catch_standard_trace():
     cmd = get_standard_systrace_path()
