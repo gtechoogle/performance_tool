@@ -32,11 +32,14 @@ startcatchBtn.addEventListener('click', (event) => {
     var outmessage = ""
     pyshell.on('message', function(message) {
         // received a message sent from the Python script (a simple "print" statement)
-        console.log(message);
+        // console.log(message);
         showOnConsole(message)
         if (message.indexOf("Device connected!")!=-1)
         {
             console.log("go to next step")
+        } else if (message.indexOf("Trace catch done!")!=-1) 
+        {
+            alert("asdf ")
         }
     });
 })
@@ -49,7 +52,6 @@ showtraceBtn.addEventListener('click', (event) => {
     win.on('close', () => { win = null })
     win.loadURL('E:\\mtk_tool\\systrace\\systrace\\YY_O1.html')
     win.show()
-
     // function updateReply() {
     //     const manageWindowReply = document.getElementById('manage-window-reply')
     //     const message = `Size: ${win.getSize()} Position: ${win.getPosition()}`

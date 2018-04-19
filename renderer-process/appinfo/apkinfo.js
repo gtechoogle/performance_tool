@@ -20,9 +20,16 @@ drag.addEventListener('drop', function(e) {
     });
 })
 
-function getAppinfo(path) {
+function getAppinfo(apkpath) {
+    var temppath = __filename;
+    var index = temppath.indexOf('renderer-process')
+    var parentpath = temppath.slice(0,index)
+    console.log(parentpath)
+    const path=require('path');
+    var aaptpath = path.join(parentpath,'tools','aapt','aapt.exe')
+    console.log(aaptpath)
     var exec = require('child_process').exec;
-    var cmdStr = 'E:\\Open_Source_Code\\Github\\performance_tool\\tools\\aapt\\aapt.exe dump badging ' + path;
+    var cmdStr = aaptpath + " dump badging " + apkpath;
     console.log(cmdStr)
     exec(cmdStr, function(err, stdout, stderr) {
         if (err) {
@@ -32,15 +39,16 @@ function getAppinfo(path) {
             the content of stdout is liking bellows：
             {"weatherinfo":{"city":"Hongkong","cityid":"101","temp":"3","WSE":"3","qy":"1019"}}
             */
+        //    console.log(stdout)
             data = stdout.split('\r\n')
-            parseinfo(data)
+            parseinfo(data[0])
             console.log(data[0]);
         }
     });
 }
 
-function parseinfo(params) {
-    var apkinfo = params.split(" ")
+function parseinfo(data) {
+    var apkinfo = data.split(" ")
     for (const info in apkinfo) {
         if (info.match("name") != null) {
 
