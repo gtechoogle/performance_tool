@@ -145,24 +145,20 @@
         </div>
       </div>
     </div> -->
-    <div id='app-section'>
+    <div class="demo">
+      <div id='app-section'>
+      </div>
     </div>
-    <div id='file-holder'>
-      <form >
-        <input type="file" id='drag'>
-        <p>Drag your apk here or click in this area.</p>
-      </form>
+    <div class="demo">
+      <div id='file-holder'>
+        <form >
+          <input type="file" id='drag'>
+          <p id="apk-file-path">Drag your apk here or click in this area.</p>
+        </form>
+      </div>
     </div>
-    
-    
     <script type="text/javascript">
-      require('./renderer-process/launchtime/coldlaunch')
-      require('./renderer-process/launchtime/hotlaunch')
       require('./renderer-process/appinfo/apkinfo')
-      // require('./renderer-process/windows/create-window')
-      // require('./renderer-process/windows/manage-window')
-      // require('./renderer-process/windows/using-window-events')
-      // require('./renderer-process/windows/frameless-window')
     </script>
 
   </section>
