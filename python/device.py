@@ -52,7 +52,7 @@ def catch_standard_trace():
     output = subprocess.Popen(cmd)
 def catchtrace():
     product = get_phoneproduct()
-    print product
+    print ("The phone type is " + product)
     if product.find('alps') != -1:
         print ("MTK platform phone detect")
         catch_mtk_trace()

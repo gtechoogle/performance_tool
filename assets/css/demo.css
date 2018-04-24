@@ -241,5 +241,6 @@
 }
 
 .console-text {
-    color: white
+    color: white;
+    size: 14px
 }

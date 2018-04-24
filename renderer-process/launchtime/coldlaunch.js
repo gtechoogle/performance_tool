@@ -60,8 +60,19 @@ showtraceBtn.addEventListener('click', (event) => {
 })
 
 function showOnConsole(message) {
+    message = customizeMessage(message)
     consoleOutput= consoleOutput + message + "<br />";
     console.log(consoleOutput)
     consoleScreen.innerHTML = consoleOutput;
 
+}
+
+function customizeMessage(message) {
+    var msg=message;
+    if (message.indexOf("The phone type is") != -1) {
+        msg="<font color='green'>" + message + '</font>';
+    } else if (message.indexOf("Please launch the app immediately") != -1) {
+        msg="<font color='red' size='14px'>" + message + "</font>"
+    }
+    return msg;
 }
